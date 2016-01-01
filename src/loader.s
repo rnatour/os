@@ -1,10 +1,10 @@
 global loader
 
-	MAGIC_NUMBER equ 0xDEADBEEF
-	FLAGS equ 0x0
-	CHECKSUM equ -(MAGIC_NUMBER + FLAGS)
+MAGIC_NUMBER equ 0x1BADB002
+FLAGS equ 0x0
+CHECKSUM equ -(MAGIC_NUMBER + FLAGS)
 
-section .text
+section .text:
 align 4
 	dd MAGIC_NUMBER
 	dd FLAGS
