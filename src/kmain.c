@@ -1,5 +1,8 @@
+/* contains main kernel code */
+
 #include "utils.h"
 
+/* main function of the kernel */
 int kmain() {
-	return sum_of_three(1,2,3);
+	return test_write_cell();
 }

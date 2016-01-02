@@ -6,17 +6,17 @@ LD_DIR = ld
 CONFIG_DIR = config
 
 CC = gcc
-CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
+CFLAGS = -std='c99' -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
              -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
 LDFLAGS = -T $(LD_DIR)/link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
 
 
-OBJECTS = loader.o kmain.o utils.o
+OBJECTS = loader.o kmain.o utils.o io.o
 OBJ = $(patsubst %,$(OBJ_DIR)/%,$(OBJECTS))
 
-DEPENDENCIES = utils.h
+DEPENDENCIES = utils.h io.h
 DEP = $(patsubst %,$(INC_DIR)/%,$(DEPENDENCIES))
 
 all: $(KERNEL_DIR)/kernel.elf

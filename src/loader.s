@@ -1,3 +1,5 @@
+; contains kernel entry point code
+
 global loader
 
 MAGIC_NUMBER equ 0x1BADB002
@@ -19,18 +21,15 @@ align 4
 	dd CHECKSUM
 	dd KERNEL_STACK_SIZE
 
-loader:
+loader:												; starting point for kernel code
 	jmp setup
 after_setup:
-	push dword 0x3
-	push dword 0x2
-	push dword 0x1
 	call kmain
 
 loop:
 	jmp loop
 
-setup:
-	mov esp, kernel_stack + KERNEL_STACK_SIZE
+setup:												; kernel setup functions
+	mov esp, kernel_stack + KERNEL_STACK_SIZE		; set up kernel stack
 	jmp after_setup
 
